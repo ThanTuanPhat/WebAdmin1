@@ -1,0 +1,69 @@
+
+.table1-container {
+  width: 45%;
+  height: 50%;
+  background: rgba(155, 174, 202, 0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 20px;
+  border-radius: 15px;
+  
+}
+.table1{
+   background: white;
+   display: flex;
+   flex-direction: column;
+   border-radius: 15px;
+   align-items: center;
+   
+}
+.table1-container h2 {
+  font-weight: 600;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  font-size: 28px;
+}
+.user-card {
+  width: 90%;
+  margin-bottom: 20px;
+}
+
+.user-card h2 {
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.user-card p {
+  font-size: 16px;
+}
+
+.user-card .date span {
+  color: green;
+  font-weight: bold;
+}
+
+hr {
+  margin-top: 10px;
+  border: none;
+  border-top: 1px solid #C7C7C7;
+}
+.UserInfoCard {
+  width: 100%;
+}
+.bottomUserCard{
+    display: flex;
+    justify-content: space-between;
+    /* margin-bottom: 10px; */
+}
+.emailText{
+    color: #1976D2;
+    
+}
+.text{
+    font-weight: 500;
+}
+.dateN{
+   
+}
