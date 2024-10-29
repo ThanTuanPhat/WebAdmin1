@@ -1,6 +1,7 @@
-// QLHH.js
 import React from 'react';
-import './QLHH.css'; // Optional: for custom styling
+import './QLHH.css'; 
+import back from "../assets/images/back.png"
+import bapcai from "../assets/images/bapcai.png"
 
 const QLHH = () => {
   const orders = [
@@ -29,12 +30,11 @@ const QLHH = () => {
       product: "Bắp cải trắng",
       category: "Rau củ",
       unitPrice: "19,000đ",
-      deliveryMethod: "Nhanh",
+      deliveryMethod: "Chậm",
       orderStatus: "Đã hủy",
       totalProductPrice: "19,000đ",
       totalPayment: "29,000đ"
     },
-    // Add more orders as needed
   ];
 
   return (
@@ -50,26 +50,35 @@ const QLHH = () => {
             <th>Trạng thái đơn hàng</th>
             <th>Tổng tiền SP</th>
             <th>Tổng thanh toán</th>
-  
           </tr>
         </thead>
         <tbody>
           {orders.map((order, index) => (
             <tr key={index}>
-              <td>{order.email}</td>
-              <td>{order.product}</td>
-              <td>{order.category}</td>
-              <td>{order.unitPrice}</td>
-              <td style={{ color: order.deliveryMethod === "Nhanh" ? "red" : "black" }}>{order.deliveryMethod}</td>
-              <td style={{ color: getOrderStatusColor(order.orderStatus) }}>{order.orderStatus}</td>
-              <td>{order.totalProductPrice}</td>
-              <td>{order.totalPayment}
-
-              <td>
-                <button className="details-button">Chi tiết</button>
-              </td>
+              <td style={{color:'blue'}}>{order.email}</td>
+              <td className='div-nameImage'>
+                <img className='div-image' src={bapcai} alt='"'/>  
+              {/* image hình ảnh */}
+              <div>{order.product}</div>
               </td>
              
+              <td style={{textAlign:'center'}}>{order.category}</td>
+              <td style={{textAlign:'center'}}>{order.unitPrice}</td>
+              <td style={{ color: order.deliveryMethod === "Nhanh" ? "red" : "black" ,textAlign:'center'}}>{order.deliveryMethod}</td>
+              <td style={{ color: getOrderStatusColor(order.orderStatus),textAlign:'center' }}>{order.orderStatus}</td>
+              <td style={{textAlign:'center'}}>{order.totalProductPrice}</td>
+              <td className="total-payment-cell">
+                <div className="total-payment-text">{order.totalPayment}</div>
+                <div className='detail_image'>
+                <button className="details-button">Chi tiết
+
+                <img className="icon-back" src={back} alt="" />
+                {/* image buton */}
+                </button>
+                
+                </div>
+               
+              </td>
             </tr>
           ))}
         </tbody>
