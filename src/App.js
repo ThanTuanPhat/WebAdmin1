@@ -7,7 +7,7 @@ import UpdateProduct from "./Screen/UpdateProduct";
 import UserManage from "./Screen/UserManage";
 import Orders from "./Screen/Orders";
 import Charts from "./Screen/Charts";
-
+import QLHH from "./Screen/QLHH";
 import {
   BrowserRouter as Router,
   Routes,
@@ -70,6 +70,7 @@ function App() {
           <Route path="/update-Product" element={<UpdateProduct />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/charts" element={<Charts />} />
+          <Route path="/QLHH" element={<QLHH />} />
         </Route>
       </Routes>
     </Router>
