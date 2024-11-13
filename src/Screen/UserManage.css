@@ -33,6 +33,7 @@
   font-size: 26px;
   font-weight: bold;
   margin-top: 10px;
+  
 }
 
 .user-card p {
@@ -73,7 +74,7 @@ hr {
 
 .user-list {
   width: 95%;
-  height: 600px;
+  height: 480px;
   background: white;
   /* border: 1px solid red; */
   overflow: scroll;
@@ -83,6 +84,7 @@ hr {
   flex-direction: column;
   border-radius: 15px;
   align-items: center;
+
 }
 
 * {
