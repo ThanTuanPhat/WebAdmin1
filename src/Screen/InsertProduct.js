@@ -403,8 +403,7 @@ const InsertProduct = () => {
         <div className="mb-3">
           <div className="inside-container">
             <label className="form-label">Mô tả:</label>
-            <input
-              type="text"
+            <textarea
               className="form-controlD"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -412,7 +411,10 @@ const InsertProduct = () => {
           </div>
         </div>
         <div className="btn-container2">
-          <button onClick={() => navigate('/products')} className="btn-primaryC">
+          <button
+            onClick={() => navigate("/products")}
+            className="btn-primaryC"
+          >
             Hủy
           </button>
           <button onClick={handleSubmit} type="button" className="btn-primary">

@@ -62,7 +62,6 @@ const UpdateProduct = (props) => {
   //     setPreserve((prev) => prev || product.preserve._id);
   //   }
   // }, [categories, preserves]);
-  
 
   useEffect(() => {
     const getAllCategories = async () => {
@@ -76,7 +75,7 @@ const UpdateProduct = (props) => {
     };
     getAllCategories();
   }, [category]);
-  
+
   useEffect(() => {
     const getAllPreserves = async () => {
       const response = await fetch("http://localhost:6677/preserves");
@@ -89,7 +88,6 @@ const UpdateProduct = (props) => {
     };
     getAllPreserves();
   }, [preserve]);
-  
 
   const uploadToCloundinary = async () => {
     try {
@@ -438,8 +436,7 @@ const UpdateProduct = (props) => {
         <div className="mb-3">
           <div className="inside-container">
             <label className="form-label">Mô tả:</label>
-            <input
-              type="text"
+            <textarea
               className="form-controlD"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -451,7 +448,7 @@ const UpdateProduct = (props) => {
             Hủy
           </a>
           <button onClick={handleSubmit} type="button" className="btn-primary">
-            Sửa 
+            Sửa
           </button>
         </div>
       </form>

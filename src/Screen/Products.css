@@ -161,3 +161,57 @@
   border-radius: 5px; /* Bo góc cho viền */
   outline: none;
 }
+/* Định dạng chung cho thanh tìm kiếm */
+.search-box {
+  position: relative;
+  width: 300px; /* Điều chỉnh độ rộng cho phù hợp */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  background-color: rgba(155, 174, 202, 0.1); /* Màu nền nhẹ */
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  height:35px;
+  margin-left: 30px;
+}
+
+/* Định dạng cho input trong thanh tìm kiếm */
+.search-box input {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  outline: none; /* Loại bỏ viền khi focus */
+  background-color: #fff;
+  transition: all 0.3s ease-in-out; /* Hiệu ứng khi hover */
+  height: 25px;
+}
+
+/* Hiệu ứng khi hover vào thanh tìm kiếm */
+.search-box input:hover {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Hiệu ứng khi input focus */
+.search-box input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Định dạng cho icon (nếu có) trong thanh tìm kiếm */
+.search-box img {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.search-box img:hover {
+  opacity: 1;
+}

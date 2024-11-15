@@ -6,14 +6,20 @@ import deleteimg from "../assets/images/delete.png";
 import eyeOn from "../assets/images/eyeson.png";
 import eyeOff from "../assets/images/eyesoff.png";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
 function Products() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState("");
+  const [searchKey, setSearchKey] = useState("");  // Đảm bảo lưu trữ searchKey
+  const [filteredProducts, setFilteredProducts] = useState([]); // Lưu trữ sản phẩm đã lọc
+
+  const location = useLocation();
+  const query = new URLSearchParams(location.search);
+  const productId = query.get("product");  // Lấy productId từ URL
 
   useEffect(() => {
-    // Gọi API để lấy tất cả danh mục
     const getAllCategories = async () => {
       const response = await fetch("http://localhost:6677/categories");
       const result = await response.json();
@@ -22,21 +28,38 @@ function Products() {
     getAllCategories();
   }, []);
 
+  // Fetch và lọc sản phẩm theo category và searchKey
   useEffect(() => {
-    // Gọi API để lấy sản phẩm theo danh mục
-    const getProductsByCategory = async (categoryId) => {
+    const getProducts = async () => {
       let url = "http://localhost:6677/products/getProducts";
-      if (categoryId) {
-        url = `http://localhost:6677/products/filter/${categoryId}`;
+      if (category) {
+        url = `http://localhost:6677/products/filter/${category}`;
       }
+
       const response = await fetch(url);
       const result = await response.json();
-      setProducts(result.data);
+      let filtered = result.data;
+
+      // Lọc sản phẩm theo searchKey
+      if (searchKey) {
+        filtered = filtered.filter((product) =>
+          product.name.toLowerCase().includes(searchKey.toLowerCase())
+        );
+      }
+
+      setProducts(filtered);
+
+      // Nếu có productId trong URL, chỉ hiển thị sản phẩm đó
+      if (productId) {
+        const selectedProduct = filtered.find((product) => product._id === productId);
+        if (selectedProduct) {
+          setProducts([selectedProduct]);
+        }
+      }
     };
 
-    // Lấy sản phẩm khi `category` thay đổi
-    getProductsByCategory(category);
-  }, [category]);
+    getProducts();
+  }, [category, searchKey, productId]);  
 
   const handleDelete = async (id) => {
     try {
@@ -60,8 +83,9 @@ function Products() {
       );
       const result = await response.json();
       if (result.success) {
-        // Cập nhật lại danh sách sản phẩm sau khi xóa
+        // Cập nhật lại danh sách sản phẩm sau khi xóa và reset searchKey
         setProducts(products.filter((item) => item._id !== id));
+        setSearchKey(""); // Reset lại searchKey sau khi xóa sản phẩm
       } else {
         Swal.fire({
           icon: "error",
@@ -85,7 +109,10 @@ function Products() {
                 <select
                   className="form-selectne"
                   value={category}
-                  onChange={(e) => setCategory(e.target.value)}
+                  onChange={(e) => {
+                    setCategory(e.target.value); // Cập nhật lại category
+                    setSearchKey("");  // Reset searchKey khi thay đổi category
+                  }} 
                 >
                   <option value="">Tất cả danh mục</option>
                   {categories.map((item) => (
@@ -96,6 +123,14 @@ function Products() {
                 </select>
               </div>
             </div>
+          </div>
+          <div className="search-box">
+            <input
+              type="text"
+              placeholder="Tìm kiếm sản phẩm"
+              value={searchKey}
+              onChange={(e) => setSearchKey(e.target.value)} // Cập nhật lại searchKey
+            />
           </div>
           <a className="insert-btn" href="/insert-Product" alt="insert">
             Thêm mới
