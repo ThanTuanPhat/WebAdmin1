@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import filter from "../assets/images/filter.png";
+import searchne from "../assets/images/searchne.png";
 import "../Screen/Products.css";
 import insert from "../assets/images/insert.png";
 import deleteimg from "../assets/images/delete.png";
@@ -8,16 +9,25 @@ import eyeOff from "../assets/images/eyesoff.png";
 import Swal from "sweetalert2";
 import { useLocation } from "react-router-dom";
 
+// import {
+//   SearchOutlined 
+// } from "@ant-design/icons";
+
+
 function Products() {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [category, setCategory] = useState("");
-  const [searchKey, setSearchKey] = useState("");  // Đảm bảo lưu trữ searchKey
+
+  const [searchKey, setSearchKey] = useState(""); // Đảm bảo lưu trữ searchKey
+
   const [filteredProducts, setFilteredProducts] = useState([]); // Lưu trữ sản phẩm đã lọc
 
   const location = useLocation();
   const query = new URLSearchParams(location.search);
-  const productId = query.get("product");  // Lấy productId từ URL
+
+  const productId = query.get("product"); // Lấy productId từ URL
+
 
   useEffect(() => {
     const getAllCategories = async () => {
@@ -51,7 +61,11 @@ function Products() {
 
       // Nếu có productId trong URL, chỉ hiển thị sản phẩm đó
       if (productId) {
-        const selectedProduct = filtered.find((product) => product._id === productId);
+
+        const selectedProduct = filtered.find(
+          (product) => product._id === productId
+        );
+
         if (selectedProduct) {
           setProducts([selectedProduct]);
         }
@@ -59,7 +73,9 @@ function Products() {
     };
 
     getProducts();
-  }, [category, searchKey, productId]);  
+
+  }, [category, searchKey, productId]);
+
 
   const handleDelete = async (id) => {
     try {
@@ -111,8 +127,10 @@ function Products() {
                   value={category}
                   onChange={(e) => {
                     setCategory(e.target.value); // Cập nhật lại category
+
                     setSearchKey("");  // Reset searchKey khi thay đổi category
                   }} 
+
                 >
                   <option value="">Tất cả danh mục</option>
                   {categories.map((item) => (
@@ -125,12 +143,17 @@ function Products() {
             </div>
           </div>
           <div className="search-box">
-            <input
-              type="text"
-              placeholder="Tìm kiếm sản phẩm"
-              value={searchKey}
-              onChange={(e) => setSearchKey(e.target.value)} // Cập nhật lại searchKey
-            />
+
+            <div className="search-box">
+              <input
+                type="text"
+                placeholder="Tìm kiếm sản phẩm"
+                value={searchKey}
+                onChange={(e) => setSearchKey(e.target.value)} // Cập nhật lại searchKey
+              />
+              <img src={searchne} alt="search-icon" />
+            </div>
+
           </div>
           <a className="insert-btn" href="/insert-Product" alt="insert">
             Thêm mới
