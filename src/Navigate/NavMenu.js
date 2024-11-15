@@ -7,7 +7,7 @@ import {
   ReconciliationOutlined,
   MessageOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme, Button } from "antd";
 import { useNavigate } from "react-router-dom";
 import "./NavMenu.css";
 import { AdminContext } from "../Component/AdminProvider";
@@ -16,7 +16,7 @@ import Search from "../Component/Search";
 
 const { Content, Sider } = Layout;
 
-const NavMenu = ({ children, isHidden }) => {
+const NavMenu = ({ children, isHidden, onLogout }) => {
   const { admin } = useContext(AdminContext);
 
   const {
@@ -27,10 +27,6 @@ const NavMenu = ({ children, isHidden }) => {
 
   const handleMenuClick = (e) => {
     navigate(e.key);
-  };
-
-  const handleSearch = (value) => {
-    console.log("Search:", value);
   };
 
   return (
@@ -93,15 +89,15 @@ const NavMenu = ({ children, isHidden }) => {
           </Sider>
         )}
         <Layout className="right-component">
-          <div>
+          <div className="headers-nav">
             <div className="hd-nav">
-              <h1>Chào mừng,  </h1>
+              <h1>Chào mừng, </h1>
               <p className="admin">{admin?.email}</p>
             </div>
+            <Button onClick={onLogout} className="logout-btn">Đăng xuất</Button>
             <p className="date">{new Date().toLocaleDateString()}</p>
           </div>
 
-          {/* Render Search only if isHidden is false */}
           {!isHidden && (
             <div className="cpn-search" style={{ width: "95%" }}>
               <Search />

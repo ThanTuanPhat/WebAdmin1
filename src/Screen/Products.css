@@ -122,12 +122,12 @@
 }
 .insert-btn {
   text-decoration: none;
-  width: 230px;
+  width: 200px;
   background: #27aae1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
+  height: 43px;
   font-size: 18px;
   font-weight: 600;
   color: white;
@@ -162,29 +162,26 @@
   outline: none;
 }
 /* Định dạng chung cho thanh tìm kiếm */
+
 .search-box {
   position: relative;
-  width: 300px; /* Điều chỉnh độ rộng cho phù hợp */
-  margin-left: auto;
-  margin-right: auto;
-  padding: 5px;
-  background-color: #f5f5f5; /* Màu nền nhẹ */
-  border-radius: 30px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  height: 30px;
-}
+  width: 230px; /* Điều chỉnh độ rộng cho phù hợp */
+  margin-right: 380px;
+  
+ 
 
+}
 /* Định dạng cho input trong thanh tìm kiếm */
 .search-box input {
   width: 100%;
   padding: 12px 20px;
   font-size: 16px;
-  border: none;
-  border-radius: 30px;
+  border: 2px solid rgba(155, 174, 202, 0.1);
+  border-radius: 10px;
   outline: none; /* Loại bỏ viền khi focus */
   background-color: #fff;
   transition: all 0.3s ease-in-out; /* Hiệu ứng khi hover */
-  height: 30px;
+  height: 36px;
 }
 
 /* Hiệu ứng khi hover vào thanh tìm kiếm */
