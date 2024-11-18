@@ -1,4 +1,10 @@
-/* Style chung cho sidebar (Sider) */
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+
+}
+
 .slider {
   background-color: #1c75bc; /* Màu nền sidebar */
   display: flex;
@@ -116,11 +122,28 @@
   background: white;
   margin: 0;
   padding: 15px;
-}
-.cpn-search{
 
 }
+.cpn-search{
+  
+}
 .headers-nav{
-  margin-right: 675px;
-  height: 80px;
+  margin-left: 50px;
+  height: 50px;
+}
+.rr-component{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+
+}
+.setting-icon{
+  width: 35px;
+  height: 30px;
+  padding-top: 25px;
+
+}
+.rrr-cpn{
+  padding-left: 18px;
 }

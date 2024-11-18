@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import "./Update.css";
+import "./InsertProduct.css";
 
 const UpdateProduct = (props) => {
   // lấy id từ url;
@@ -225,7 +225,7 @@ const UpdateProduct = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="containerne">
       <form className="form-container">
         <div className="titleF">
           <h1>Thêm sản phẩm</h1>
@@ -234,7 +234,7 @@ const UpdateProduct = (props) => {
         <div className="n-c-q-x-container">
           <div className="mb-4 mt-4">
             <div className="inside-container">
-              <label className="form-label">Sửa sản phẩm:</label>
+              <label className="form-label">Tên sản phẩm:</label>
               <input
                 type="text"
                 className="form-control"
@@ -348,11 +348,11 @@ const UpdateProduct = (props) => {
         <div className="n-c-a-container">
           <div className="mb-3">
             <div className="inside-container">
-              <label className="form-label"> Nhà cung cấp:</label>
+              <label className="form-label">Nhà cung cấp:</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter oum"
+                placeholder="Enter supplier"
                 value={supplier}
                 onChange={(e) => setSupplier(e.target.value)}
               />
@@ -365,66 +365,54 @@ const UpdateProduct = (props) => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter description"
+                placeholder="Enter uses"
                 value={uses}
                 onChange={(e) => setUses(e.target.value)}
               />
             </div>
           </div>
-          <div className="mb-3">
+
+          <div className="mb-3 link-container">
             <div className="inside-container">
-              <label className="form-label">Ảnh từ thiết bị:</label>
-              <input
-                type="file"
-                className="form-controlimg"
-                id="image"
-                onChange={uploadToCloundinary}
-              />
-            </div>
-            <div className="inside-container mt-2">
               <label className="form-label">Hoặc dán link ảnh:</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Dán link ảnh vào đây"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-              />
-              <button
-                type="button"
-                className="btn btn-primary mt-2"
-                onClick={handleAddImageUrl}
-              >
-                Thêm link ảnh
-              </button>
-            </div>
-          </div>
-          <div className="image-preview-container">
-            {images.map((item, index) => (
-              <div
-                key={index}
-                style={{
-                  position: "relative",
-                  display: "inline-block",
-                  margin: "5px",
-                }}
-              >
-                <img
-                  src={item}
-                  alt=""
-                  style={{ width: 100, height: 100, objectFit: "cover" }}
+              <div className="linkimg-container">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Dán link ảnh vào đây"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
                 />
                 <button
+                  type="button"
+                  className="btn-link"
+                  onClick={handleAddImageUrl}
+                >
+                  Dán 
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="image-upload-container">
+          <div className="inside-container">
+            <label className="form-label">Ảnh từ thiết bị:</label>
+            <input
+              type="file"
+              className="form-controlimg"
+              id="image"
+              onChange={uploadToCloundinary}
+            />
+          </div>
+
+          <div className="image-preview-container">
+            {images.map((item, index) => (
+              <div key={index} className="image-preview">
+                <img src={item} alt="preview" />
+                <button
                   onClick={() => removeImage(item)}
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    right: 0,
-                    background: "red",
-                    color: "white",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
+                  className="remove-image-btn"
                 >
                   x
                 </button>
@@ -444,11 +432,14 @@ const UpdateProduct = (props) => {
           </div>
         </div>
         <div className="btn-container2">
-          <a href="/products" className="btn-primaryC">
+          <button
+            onClick={() => navigate("/products")}
+            className="btn-primaryC"
+          >
             Hủy
-          </a>
+          </button>
           <button onClick={handleSubmit} type="button" className="btn-primary">
-            Sửa
+            Thêm mới
           </button>
         </div>
       </form>

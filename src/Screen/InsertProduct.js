@@ -192,7 +192,7 @@ const InsertProduct = () => {
   };
 
   return (
-    <div className="container">
+    <div className="containerne">
       <form className="form-container">
         <div className="titleF">
           <h1>Thêm sản phẩm</h1>
@@ -315,11 +315,11 @@ const InsertProduct = () => {
         <div className="n-c-a-container">
           <div className="mb-3">
             <div className="inside-container">
-              <label className="form-label"> Nhà cung cấp:</label>
+              <label className="form-label">Nhà cung cấp:</label>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter oum"
+                placeholder="Enter supplier"
                 value={supplier}
                 onChange={(e) => setSupplier(e.target.value)}
               />
@@ -332,66 +332,54 @@ const InsertProduct = () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Enter description"
+                placeholder="Enter uses"
                 value={uses}
                 onChange={(e) => setUses(e.target.value)}
               />
             </div>
           </div>
-          <div className="mb-3">
+
+          <div className="mb-3 link-container">
             <div className="inside-container">
-              <label className="form-label">Ảnh từ thiết bị:</label>
-              <input
-                type="file"
-                className="form-controlimg"
-                id="image"
-                onChange={uploadToCloundinary}
-              />
-            </div>
-            <div className="inside-container mt-2">
               <label className="form-label">Hoặc dán link ảnh:</label>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Dán link ảnh vào đây"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-              />
-              <button
-                type="button"
-                className="btn btn-primary mt-2"
-                onClick={handleAddImageUrl}
-              >
-                Thêm link ảnh
-              </button>
-            </div>
-          </div>
-          <div className="image-preview-container">
-            {images.map((item, index) => (
-              <div
-                key={index}
-                style={{
-                  position: "relative",
-                  display: "inline-block",
-                  margin: "5px",
-                }}
-              >
-                <img
-                  src={item}
-                  alt=""
-                  style={{ width: 100, height: 100, objectFit: "cover" }}
+              <div className="linkimg-container">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Dán link ảnh vào đây"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
                 />
                 <button
+                  type="button"
+                  className="btn-link"
+                  onClick={handleAddImageUrl}
+                >
+                  Dán 
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="image-upload-container">
+          <div className="inside-container">
+            <label className="form-label">Ảnh từ thiết bị:</label>
+            <input
+              type="file"
+              className="form-controlimg"
+              id="image"
+              onChange={uploadToCloundinary}
+            />
+          </div>
+
+          <div className="image-preview-container">
+            {images.map((item, index) => (
+              <div key={index} className="image-preview">
+                <img src={item} alt="preview" />
+                <button
                   onClick={() => removeImage(item)}
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    right: 0,
-                    background: "red",
-                    color: "white",
-                    border: "none",
-                    cursor: "pointer",
-                  }}
+                  className="remove-image-btn"
                 >
                   x
                 </button>

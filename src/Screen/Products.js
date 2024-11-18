@@ -127,7 +127,6 @@ function Products() {
                   value={category}
                   onChange={(e) => {
                     setCategory(e.target.value); // Cập nhật lại category
-
                     setSearchKey("");  // Reset searchKey khi thay đổi category
                   }} 
 
@@ -147,7 +146,7 @@ function Products() {
             <div className="search-box">
               <input
                 type="text"
-                placeholder="Tìm kiếm sản phẩm"
+                placeholder="Nhập để tìm sản phẩm"
                 value={searchKey}
                 onChange={(e) => setSearchKey(e.target.value)} // Cập nhật lại searchKey
               />

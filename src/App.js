@@ -19,6 +19,9 @@ import AddSale from "./Screen/AddSale";
 import Charts from "./Screen/Charts";
 import NavMenu from "./Navigate/NavMenu";
 import { AdminProvider } from "./Component/AdminProvider";
+import '@fontsource/roboto'; // Tải trọng số mặc định
+import '@fontsource/roboto/400.css'; // Tải trọng số cụ thể
+
 
 function App() {
   const getAdminFromLocalStorage = () => {
@@ -28,7 +31,8 @@ function App() {
 
   const [admin, setAdmin] = useState(getAdminFromLocalStorage());
   const [isHidden, setIsHidden] = useState(!admin);
-
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+  
   const saveAdminInfo = (adminInfo) => {
     if (!adminInfo) {
       localStorage.removeItem("admin");

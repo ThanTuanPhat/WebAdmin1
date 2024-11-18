@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   NotificationOutlined,
   UserOutlined,
@@ -6,18 +6,24 @@ import {
   BarChartOutlined,
   ReconciliationOutlined,
   MessageOutlined,
+  SettingOutlined,
+  PoweroffOutlined, 
 } from "@ant-design/icons";
-import { Layout, Menu, theme, Button } from "antd";
+import { Layout, Menu, theme, Modal } from "antd";
 import { useNavigate } from "react-router-dom";
 import "./NavMenu.css";
 import { AdminContext } from "../Component/AdminProvider";
 import logoBlue2 from "../assets/images/logoBlue2.jpg";
 import Search from "../Component/Search";
+import '@fontsource/roboto'; // Tải trọng số mặc định
+import '@fontsource/roboto/400.css'; // Tải trọng số cụ thể
+
 
 const { Content, Sider } = Layout;
 
 const NavMenu = ({ children, isHidden, onLogout }) => {
   const { admin } = useContext(AdminContext);
+  const [isModalVisible, setIsModalVisible] = useState(false); // Thêm state để quản lý modal
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -26,7 +32,29 @@ const NavMenu = ({ children, isHidden, onLogout }) => {
   const navigate = useNavigate();
 
   const handleMenuClick = (e) => {
-    navigate(e.key);
+    if (e.key === "logout") {
+      setIsModalVisible(true); // Hiển thị modal khi chọn đăng xuất
+    } else {
+      navigate(e.key); // Điều hướng đến trang khi chọn mục khác
+    }
+  };
+
+  // Mở modal xác nhận đăng xuất
+  const showLogoutModal = () => {
+    setIsModalVisible(true);
+  };
+
+  // Xác nhận đăng xuất
+  const handleLogout = () => {
+    if (onLogout) {
+      onLogout(); // Gọi hàm logout từ parent
+    }
+    setIsModalVisible(false); // Đóng modal
+  };
+
+  // Hủy bỏ đăng xuất
+  const handleCancel = () => {
+    setIsModalVisible(false); // Đóng modal khi người dùng hủy
   };
 
   return (
@@ -60,8 +88,8 @@ const NavMenu = ({ children, isHidden, onLogout }) => {
                   label: "Quản lý hàng hóa",
                   children: [
                     { key: "/products", label: "Quản lý sản phẩm" },
-                    { key: "/QLHH", label: "Quản lý loại hàng" },
-                    { key: "/orders", label: "Quản lý đơn hàng" },
+                    { key: "/QLHH", label: "Quản lý đơn hàng" },
+                 
                   ],
                 },
                 {
@@ -83,19 +111,27 @@ const NavMenu = ({ children, isHidden, onLogout }) => {
                     { key: "/notifications/alerts", label: "System Alerts" },
                   ],
                 },
+                // Mục đăng xuất trong menu
+                {
+                  key: "logout",
+                  icon: <PoweroffOutlined />,
+                  label: "Đăng xuất",
+                },
               ]}
               onClick={handleMenuClick}
             />
           </Sider>
         )}
         <Layout className="right-component">
-          <div className="headers-nav">
-            <div className="hd-nav">
-              <h1>Chào mừng, </h1>
-              <p className="admin">{admin?.email}</p>
+          <div className="rr-component">
+            <div className="rrr-cpn">
+              <div className="hd-nav">
+                <h1>Chào mừng, </h1>
+                <p className="admin">{admin?.email}</p>
+              </div>
+              <p className="date">{new Date().toLocaleDateString()}</p>
             </div>
-            <Button onClick={onLogout} className="logout-btn">Đăng xuất</Button>
-            <p className="date">{new Date().toLocaleDateString()}</p>
+            <SettingOutlined className="setting-icon" />
           </div>
 
           {!isHidden && (
@@ -105,7 +141,7 @@ const NavMenu = ({ children, isHidden, onLogout }) => {
           )}
           <Content
             style={{
-              padding: 18,
+              padding: 15,  
               height: "50%",
               width: "100%",
               background: colorBgContainer,
@@ -116,6 +152,18 @@ const NavMenu = ({ children, isHidden, onLogout }) => {
           </Content>
         </Layout>
       </Layout>
+
+      {/* Modal xác nhận đăng xuất */}
+      <Modal
+        title="Xác nhận đăng xuất"
+        visible={isModalVisible}
+        onOk={handleLogout} // Đảm bảo onOk gọi handleLogout
+        onCancel={handleCancel}
+        okText="Có"
+        cancelText="Không"
+      >
+        <p>Bạn có chắc chắn muốn đăng xuất?</p>
+      </Modal>
     </Layout>
   );
 };

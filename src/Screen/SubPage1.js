@@ -1,7 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-const SubPage1 = () => {
-  return <div>Welcome to SubPage 1!</div>;
-};
+function SubPage1() {
+  return (
+    <div>SubPage1</div>
+  )
+}
 
-export default SubPage1;
+export default SubPage1
