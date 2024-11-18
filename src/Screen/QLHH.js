@@ -91,7 +91,7 @@ const QLHH = () => {
                 <div className="total-payment-text">{item.totalPayment}</div>
                 <div className='detail_image'>
                   <button className="details-button">Chi tiết
-                    <img className="icon-back" src={back} alt="Back" />
+                    {/* <img className="icon-back" src={back} alt="Back" /> */}
                   </button>
                 </div>
               </td>

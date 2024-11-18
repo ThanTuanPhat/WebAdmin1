@@ -21,7 +21,9 @@ import NavMenu from "./Navigate/NavMenu";
 import { AdminProvider } from "./Component/AdminProvider";
 import '@fontsource/roboto'; // Tải trọng số mặc định
 import '@fontsource/roboto/400.css'; // Tải trọng số cụ thể
-
+import ResetPassword from "./Screen/ResetPassword";
+import Comment from "./Screen/Comment";
+import Payment from "./Screen/Payment";
 
 function App() {
   const getAdminFromLocalStorage = () => {
@@ -68,6 +70,8 @@ function App() {
               <Route path="/orders" element={<Orders />} />
               <Route path="/QLHH" element={<QLHH />} />
               <Route path="/AddSale" element={<AddSale />} />
+              <Route path="/Comment" element={<Comment />} />
+              <Route path="/Payment" element={<Payment />} />
               <Route path="/login" element={<Navigate to="/charts" />} />
             </Routes>
           </NavMenu>
@@ -76,6 +80,8 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login saveAdmin={saveAdminInfo} />} />
           <Route path="*" element={<Navigate to="/login" replace />} />
+          <Route path="/ResetPassword" element={<ResetPassword />} />
+
         </Routes>
       )}
     </Router>

@@ -140,7 +140,7 @@ function Login(props) {
             <button onClick={handleLogin} className="btn-login">
               Đăng nhập
             </button>
-            <a href="##" className="forgot-password">
+            <a className="forgot-password" href="/ResetPassword" alt="insert">
               Quên mật khẩu?
             </a>
           </div>

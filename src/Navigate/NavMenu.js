@@ -103,6 +103,11 @@ const NavMenu = ({ children, isHidden, onLogout }) => {
                   label: "Quản lý khuyến mãi",
                 },
                 {
+                  key: "/Payment",
+                  icon: <BarChartOutlined />,
+                  label: "Quản lý thanh toán",
+                },
+                {
                   key: "6",
                   icon: <NotificationOutlined />,
                   label: "Notifications",
