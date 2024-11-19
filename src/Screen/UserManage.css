@@ -31,7 +31,6 @@
   margin-bottom: 20px;
   margin-top: 5px;
   font-size: 28px;
-  color: #1C75BC;
 }
 .user-card {
   width: 90%;
@@ -77,6 +76,7 @@ hr {
 .text {
   font-weight: 500;
   height: 25px;
+  color: rgba(75, 192, 192, 0.8);
 }
 .dateN {
 }
