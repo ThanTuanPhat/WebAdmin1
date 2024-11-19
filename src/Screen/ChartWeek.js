@@ -95,7 +95,7 @@ const TopProductsChart = () => {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center"}}>
       <a
           className="btn-chart"
-          href="/ChartWeek"
+          href="/charts"
           alt="insert"
           style={{
             display: "block",

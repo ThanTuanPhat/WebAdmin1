@@ -93,12 +93,12 @@ const NavMenu = ({ children, isHidden, onLogout }) => {
                   ],
                 },
                 {
-                  key: "/comments",
+                  key: "/Comment",
                   icon: <MessageOutlined />,
                   label: "Quản lý bình luận",
                 },
                 {
-                  key: "/promotions",
+                  key: "/AddSale",
                   icon: <TagOutlined />,
                   label: "Quản lý khuyến mãi",
                 },

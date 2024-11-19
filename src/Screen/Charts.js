@@ -99,8 +99,8 @@ const TopProductsChart = () => {
         </div>
         <h1
           style={{
-            padding: 10,
-            paddingLeft: 70,
+           
+            paddingLeft: 90,
             color: "#27AAE1",
             fontSize: "24px", // Kích thước chữ
             fontWeight: "bold", // Đậm chữ
@@ -123,8 +123,7 @@ const TopProductsChart = () => {
             marginRight: 18,
             fontSize: 16,
             fontWeight: 600,
-            paddingTop: 10,
-            paddingBottom: 10,
+
           }}
         >
           Theo tuần
