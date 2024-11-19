@@ -63,7 +63,7 @@ function UserManage() {
   return (
     <div className="container">
       <div className="table1-container">
-        <h2>Người dùng mới</h2>
+        <h2 className="nameU">Người dùng mới</h2>
         <div className="user-list">
           {users.length > 0 &&
             users.map((user, index) => {
@@ -79,7 +79,7 @@ function UserManage() {
         </div>
       </div>
       <div className="table1-container">
-        <h2>Người dùng trên 3 tháng</h2>
+        <h2 className="nameU">Người dùng trên 3 tháng</h2>
         <div className="user-list">
           {oldusers.length > 0 &&
             oldusers.map((user, index) => {

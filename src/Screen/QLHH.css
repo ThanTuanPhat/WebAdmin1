@@ -9,13 +9,15 @@
 .order-table {
   width: 100%;
   border-collapse: collapse;
+ 
 }
 
 .order-table th,
 .order-table td {
   padding: 12px;
-  text-align: left;
+  text-align: center;
   border: 1px solid #ddd;
+
 }
 
 .total-payment-cell {
@@ -43,8 +45,8 @@
   justify-content: center;
   right: 0;
   width: 80px;
-  height: 27px;
-  margin-top: 20px;
+  height: 22px;
+  margin-top: 14px;
   font-size: 11px;
 }
 .detail_image {

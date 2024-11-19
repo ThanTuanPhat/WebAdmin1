@@ -91,7 +91,7 @@ const TopProductsChart = () => {
       <h1
         style={{
           padding: 10,
-          color: "#FFC107",
+          color: "#27AAE1",
           fontSize: "24px", // Kích thước chữ
           fontWeight: "bold", // Đậm chữ
           textAlign: "center", // Căn giữa

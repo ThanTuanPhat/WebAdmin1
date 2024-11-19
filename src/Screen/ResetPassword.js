@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../Screen/ResetPassword.css";
+import "../Screen/Login.css";
 import logo from "../assets/images/logo.png";
 import logo2 from "../assets/images/logoBlue.png";
 import eyesoff from "../assets/images/eyesoff.png";
@@ -24,14 +24,20 @@ function ResetPassword() {
   });
 
   const handleResetPassword = async () => {
-    setErrors({ email: "", password: "", newPassword: "", confirmPassword: "" });
+    setErrors({
+      email: "",
+      password: "",
+      newPassword: "",
+      confirmPassword: "",
+    });
 
     // Validate dữ liệu nhập
     const newErrors = {};
     if (!email) newErrors.email = "Vui lòng nhập email";
     if (!password) newErrors.password = "Vui lòng nhập mật khẩu cũ";
     if (!newPassword) newErrors.newPassword = "Vui lòng nhập mật khẩu mới";
-    if (!confirmPassword) newErrors.confirmPassword = "Vui lòng xác nhận mật khẩu mới";
+    if (!confirmPassword)
+      newErrors.confirmPassword = "Vui lòng xác nhận mật khẩu mới";
     if (newPassword && confirmPassword && newPassword !== confirmPassword) {
       newErrors.confirmPassword = "Mật khẩu xác nhận không khớp";
     }
@@ -48,13 +54,16 @@ function ResetPassword() {
         newPassword: newPassword,
       };
 
-      const response = await fetch("http://localhost:6677/admins/change-passwordAdmin", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
+      const response = await fetch(
+        "http://localhost:6677/admins/change-passwordAdmin",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
 
       const result = await response.json();
 
@@ -92,13 +101,13 @@ function ResetPassword() {
       </div>
       <div className="body">
         <div className="logo2Container">
-<img className="logoimg2" src={logo2} alt="logo2" />
+          <img className="logoimg2" src={logo2} alt="logo2" />
           <span className="text-logo2">The Mini Store</span>
         </div>
-        <div className="login-Container">
+        <div className="login-Container2">
           <div className="textF-Container">
             <h1 className="text-login">Đổi mật khẩu</h1>
-            <p className="text-loginR">Nhập thông tin để tiếp tục</p>
+            <p className="text-loginR">, nhập để tiếp tục</p>
           </div>
           <div className="inside-input">
             <label className="label">Email</label>
@@ -148,15 +157,19 @@ function ResetPassword() {
                 style={{ cursor: "pointer" }}
               />
             </div>
-            {errors.newPassword && <p className="error-text">{errors.newPassword}</p>}
+            {errors.newPassword && (
+              <p className="error-text">{errors.newPassword}</p>
+            )}
           </div>
           <div className="inside-input">
             <label className="label">Xác nhận mật khẩu mới</label>
             <div className="input-password">
               <input
-                className={`input ${errors.confirmPassword ? "input-error" : ""}`}
+                className={`input ${
+                  errors.confirmPassword ? "input-error" : ""
+                }`}
                 placeholder="Nhập lại mật khẩu mới"
-type={showPassword.confirmPassword ? "text" : "password"}
+                type={showPassword.confirmPassword ? "text" : "password"}
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
@@ -168,13 +181,19 @@ type={showPassword.confirmPassword ? "text" : "password"}
                 style={{ cursor: "pointer" }}
               />
             </div>
-            {errors.confirmPassword && <p className="error-text">{errors.confirmPassword}</p>}
+            {errors.confirmPassword && (
+              <p className="error-text">{errors.confirmPassword}</p>
+            )}
           </div>
           <button onClick={handleResetPassword} className="btn-login">
             Xác nhận
           </button>
-          <a className="forgot-password" href="/ResetPassword" alt="Quên mật khẩu?">
-            Quên mật khẩu?
+          <a
+            className="forgot-password"
+            href="/login"
+            alt="login"
+          >
+            Đăng nhập
           </a>
         </div>
       </div>

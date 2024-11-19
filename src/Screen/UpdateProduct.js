@@ -228,7 +228,7 @@ const UpdateProduct = (props) => {
     <div className="containerne">
       <form className="form-container">
         <div className="titleF">
-          <h1>Thêm sản phẩm</h1>
+          <h1>Sửa sản phẩm</h1>
         </div>
 
         <div className="n-c-q-x-container">

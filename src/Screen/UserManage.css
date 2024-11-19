@@ -24,6 +24,14 @@
   margin-bottom: 20px;
   margin-top: 5px;
   font-size: 28px;
+  
+}
+.nameU{
+  font-weight: 700;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  font-size: 28px;
+  color: #1C75BC;
 }
 .user-card {
   width: 90%;

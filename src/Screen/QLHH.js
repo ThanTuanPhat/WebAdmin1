@@ -67,7 +67,7 @@ const QLHH = () => {
       <table className="order-table">
         <thead>
           <tr>
-            <th>Email người dùng</th>
+            <th>Tên người dùng</th>
             <th>Sản phẩm</th>
             <th>Mã đơn hàng</th>
             <th>Đơn giá</th>
@@ -81,7 +81,7 @@ const QLHH = () => {
           {order.map((item, index) => (
             <tr key={index}>
               <td style={{ color: 'blue' }}>{item.email}</td>
-              <td className='div-nameImage'>{item.product}</td>
+              <td  className=''>{item.product}</td>
               <td style={{ textAlign: 'center' }}><strong>{item.id}</strong></td> {/* Hiển thị id */}
               <td style={{ textAlign: 'center' }}>{item.unitPrice}</td>
               <td style={{ color: item.deliveryMethod === "Nhanh" ? "red" : "black", textAlign: 'center' }}>{item.deliveryMethod}</td>

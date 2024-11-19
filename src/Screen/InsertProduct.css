@@ -19,10 +19,14 @@
   padding-left: 210px;
   display: flex;
   flex-direction: column;
+  background-color: red;
 }
 .titleF {
   width: 80%;
   text-align: center;
+}
+.titleF h1{
+  color: #1C75BC;
 }
 .form-label {
   font-weight: 400;
