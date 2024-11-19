@@ -88,18 +88,48 @@ const TopProductsChart = () => {
         padding: 5,
       }}
     >
-      <h1
-        style={{
-          padding: 10,
-          color: "#27AAE1",
-          fontSize: "24px", // Kích thước chữ
-          fontWeight: "bold", // Đậm chữ
-          textAlign: "center", // Căn giữa
-          textTransform: "uppercase", // Chuyển chữ thành in hoa
-        }}
-      >
-        Top 10 sản phẩm bán chạy nhất
-      </h1>
+      <div style={{
+        display: "flex",
+        width: "100%",
+        justifyContent: "space-between",
+        alignItems: "center",  
+      }}>
+        <div>
+          
+        </div>
+        <h1
+          style={{
+            padding: 10,
+            paddingLeft: 70,
+            color: "#27AAE1",
+            fontSize: "24px", // Kích thước chữ
+            fontWeight: "bold", // Đậm chữ
+            textAlign: "center", // Căn giữa
+            textTransform: "uppercase", // Chuyển chữ thành in hoa
+          }}
+        >
+          Top 10 sản phẩm bán chạy nhất
+        </h1>
+        <a
+          className="btn-chart"
+          href="/ChartWeek"
+          alt="insert"
+          style={{
+            display: "block",
+            textAlign: "center" /* Căn giữa văn bản */,
+            marginTop: 10 /* Khoảng cách giữa nút và liên kết */,
+            color: "#27aae1" /* Màu chữ cho liên kết */,
+            textDecoration: "none" /* Bỏ gạch chân */,
+            marginRight: 18,
+            fontSize: 16,
+            fontWeight: 600,
+            paddingTop: 10,
+            paddingBottom: 10,
+          }}
+        >
+          Theo tuần
+        </a>
+      </div>
 
       <canvas id="myChart"></canvas>
     </div>

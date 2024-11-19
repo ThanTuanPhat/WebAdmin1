@@ -24,6 +24,7 @@ import '@fontsource/roboto/400.css'; // Tải trọng số cụ thể
 import ResetPassword from "./Screen/ResetPassword";
 import Comment from "./Screen/Comment";
 import Payment from "./Screen/Payment";
+import ChartWeek from "./Screen/ChartWeek"
 
 function App() {
   const getAdminFromLocalStorage = () => {
@@ -62,6 +63,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Navigate to="/charts" replace />} />
               <Route path="/charts" element={<Charts />} />
+              <Route path="/ChartWeek" element={<ChartWeek />} />
               <Route path="/userManage" element={<UserManage />} />
               <Route path="/products" element={<Products />} />
               <Route path="/add-Product" element={<AddProduct />} />

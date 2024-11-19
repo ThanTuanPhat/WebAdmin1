@@ -50,6 +50,13 @@
   /* display: flex;
     align-items: center */
 }
+.inside-container2 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+
+}
 .cubeN {
   width: 10%;
   color: #1c75bc;

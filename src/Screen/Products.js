@@ -121,7 +121,7 @@ function Products() {
           <div className="filter-sp">
             <img className="filter-icon" src={filter} alt="icon" />
             <div className="mb-3">
-              <div className="inside-container">
+              <div className="inside-container2">
                 <select
                   className="form-selectne"
                   value={category}

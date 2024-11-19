@@ -5,7 +5,8 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  margin-top: 80px;
+  margin-top: 32px;
+  padding-top: 10px;
 }
 .n-c-q-x-container {
   display: flex;
@@ -24,6 +25,7 @@
 .titleF {
   width: 80%;
   text-align: center;
+ 
 }
 .titleF h1{
   color: #1C75BC;
@@ -36,6 +38,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  height: 77px;
 
 }
 .form-select {
@@ -98,8 +101,8 @@
 /* Style cho từng ảnh */
 .image-preview {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
 }
 .btn-link{
   width: 50px;
@@ -135,7 +138,7 @@
 
 .form-controlD {
   width: 960px !important;
-  height: 100px !important;
+  height: 70px !important;
   border: 1px solid #27aae1; /* Đổi màu viền */
   border-radius: 5px; /* Bo góc cho viền */
   outline: none; /* Loại bỏ viền mặc định khi chọn */
