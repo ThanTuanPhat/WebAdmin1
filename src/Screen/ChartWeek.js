@@ -14,6 +14,23 @@ const TopProductsChart = () => {
   const [week, setWeek] = useState("");
   const [year, setYear] = useState(new Date().getFullYear());
   const [chartInstance, setChartInstance] = useState(null);
+  const [weekRange, setWeekRange] = useState("");
+
+  // Hàm tính ngày bắt đầu và kết thúc tuần
+  const calculateWeekRange = (week, year) => {
+    const firstDayOfYear = new Date(year, 0, 1);
+    const days = (week - 1) * 7;
+    const startOfWeek = new Date(firstDayOfYear.setDate(firstDayOfYear.getDate() + days));
+    const endOfWeek = new Date(startOfWeek);
+    endOfWeek.setDate(startOfWeek.getDate() + 6);
+
+    const formatDate = (date) =>
+      `${date.getDate().toString().padStart(2, "0")}/${(date.getMonth() + 1)
+        .toString()
+        .padStart(2, "0")}/${date.getFullYear()}`;
+
+    return `${formatDate(startOfWeek)} - ${formatDate(endOfWeek)}`;
+  };
 
   useEffect(() => {
     Chart.register(
@@ -79,6 +96,13 @@ const TopProductsChart = () => {
         });
 
         setChartInstance(newChart);
+
+        // Tính khoảng ngày khi có tuần được chọn
+        if (week) {
+          setWeekRange(calculateWeekRange(Number(week), year));
+        } else {
+          setWeekRange("");
+        }
       } catch (error) {
         console.error("Error fetching or displaying data:", error);
       }
@@ -87,31 +111,31 @@ const TopProductsChart = () => {
     fetchData();
   }, [week, year]);
 
-  // Tạo danh sách tuần từ 1 đến 52
   const weeks = Array.from({ length: 52 }, (_, i) => i + 1);
 
   return (
-    <div style={{ padding: 5, marginBottom: "20px"}}>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center"}}>
-      <a
+    <div style={{ padding: 5, marginBottom: "20px" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <a
           className="btn-chart"
           href="/charts"
-          alt="insert"
           style={{
-            display: "block",
-            alignItems: "center",
-            textAlign: "center" /* Căn giữa văn bản */,
-            marginTop: 10 /* Khoảng cách giữa nút và liên kết */,
-            color: "#27aae1" /* Màu chữ cho liên kết */,
-            textDecoration: "none" /* Bỏ gạch chân */,
+            textAlign: "center",
+            marginTop: 10,
+            color: "#27aae1",
+            textDecoration: "none",
             marginRight: 18,
             fontSize: 16,
             fontWeight: 600,
-            paddingLeft: 20,
-
           }}
         >
-         Quay lại
+          Quay lại
         </a>
         <h1
           style={{
@@ -126,21 +150,8 @@ const TopProductsChart = () => {
           Sản phẩm bán chạy trong tuần
         </h1>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-   
-
-          }}
-        >
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <div style={{ marginRight: 10 }}>
-            <label
-              htmlFor="week"
-              style={{ fontWeight: "bold", marginRight: 5 }}
-            >
-
-            </label>
             <select
               id="week"
               value={week}
@@ -179,11 +190,6 @@ const TopProductsChart = () => {
             </select>
           </div>
           <div>
-            <label
-              htmlFor="year"
-              style={{ fontWeight: "bold", marginRight: 5 }}
-            >
-            </label>
             <select
               id="year"
               value={year}
@@ -222,6 +228,19 @@ const TopProductsChart = () => {
           </div>
         </div>
       </div>
+
+      {weekRange && (
+        <p
+          style={{
+            textAlign: "center",
+            marginTop: "10px",
+            fontSize: "14px",
+            color: "#555",
+          }}
+        >
+          Tuần {week}: {weekRange}
+        </p>
+      )}
 
       <canvas id="myChart"></canvas>
     </div>
